@@ -12,12 +12,14 @@ const bodyParser = require("body-parser");
 const app = express();
 // call the body parser function
 
+// import the routes
 const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
 app.use(bodyParser.urlencoded());
 
-app.use(adminRoutes);
+// filtering allows us to only run the middleware on certain routes
+app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
 // create a 404 page
