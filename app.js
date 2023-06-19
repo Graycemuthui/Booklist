@@ -17,6 +17,7 @@ const adminRoutes = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
 app.use(bodyParser.urlencoded());
+app.use(express.static(path.join(__dirname, "public")));
 
 // filtering allows us to only run the middleware on certain routes
 app.use("/admin", adminRoutes);

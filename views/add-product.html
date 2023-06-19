@@ -4,12 +4,13 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Add product</title>
+    <link rel="stylesheet" href="/css/product.css" />
   </head>
   <body>
     <header>
       <nav>
         <ul>
-          <li><a href="/shop">Shop</a></li>
+          <li><a href="/">Shop</a></li>
           <li><a href="add-product">Add product</a></li>
         </ul>
       </nav>
@@ -18,6 +19,7 @@
     <main>
       <form action="/add-product" method="POST">
         <label for="title">Title</label>
+        <input type="text" name="title" id="title" />
         <button type="submit">Add product</button>
       </form>
     </main>
