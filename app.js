@@ -20,6 +20,11 @@ app.use(bodyParser.urlencoded());
 app.use(adminRoutes);
 app.use(shopRoutes);
 
+// create a 404 page
+app.use((req, res, next) => {
+  res.status(404).send("<h1>Page not found</h1>");
+});
+
 // the server takes the request and response objects
 // event loop - these events keep on running as long as there are event listeners registered
 // CreateServer is an event listener

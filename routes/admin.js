@@ -1,7 +1,9 @@
 const express = require("express");
 
+// router is like a mini express app
 const router = express.Router();
 
+// router.get
 router.get("/add-product", (req, res, next) => {
   console.log("In another middleware!");
   res.send(
