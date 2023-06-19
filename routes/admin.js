@@ -1,3 +1,4 @@
+const path = require("path");
 const express = require("express");
 
 // router is like a mini express app
@@ -6,9 +7,8 @@ const router = express.Router();
 // same paths can be used if methods are different
 router.get("/add-product", (req, res, next) => {
   console.log("In another middleware!");
-  res.send(
-    "<form action='/admin/product' method='POST'><input type='text' name='title'><button type='submit'>Add Product</button></form>"
-  );
+  // join is a method of the path module that concatenates the paths
+  res.sendFile(path.join(__dirname, "../", "views", "add-product.html"));
 });
 
 router.post("/add-product", (req, res, next) => {
