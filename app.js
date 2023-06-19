@@ -10,32 +10,15 @@ const bodyParser = require("body-parser");
 
 // express is a function
 const app = express();
+// call the body parser function
+
+const adminRoutes = require("./routes/admin");
+const shopRoutes = require("./routes/shop");
+
 app.use(bodyParser.urlencoded());
 
-app.use("/", (req, res, next) => {
-  console.log("This always runs!");
-  next();
-});
-
-app.use("/add-product", (req, res, next) => {
-  console.log("In another middleware!");
-  res.send(
-    "<form action='/product' method='POST'><input type='text' name='title'><button type='submit'>Add Product</button></form>"
-  );
-});
-
-app.post("/product", (req, res, next) => {
-  // need to parse the body
-  console.log(req.body);
-  res.redirect("/");
-});
-
-// use is a middleware function
-app.use("/", (req, res, next) => {
-  console.log("In the middleware");
-  // send allows us to send a response
-  res.send("<h1>Hello from Express!</h1>");
-});
+app.use(adminRoutes);
+app.use(shopRoutes);
 
 // the server takes the request and response objects
 // event loop - these events keep on running as long as there are event listeners registered
