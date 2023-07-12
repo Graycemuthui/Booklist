@@ -12,11 +12,19 @@ const bodyParser = require("body-parser");
 const app = express();
 // call the body parser function
 
+// set allows us to set a value globally
+// set the templating engine
+// pug is a templating engine
+app.set("view engine", "pug");
+app.set("views", "views");
+
 // import the routes
 const adminData = require("./routes/admin");
 const shopRoutes = require("./routes/shop");
 
-app.use(bodyParser.urlencoded());
+app.use(bodyParser.urlencoded({ extended: false }));
+// thie static allows us to serve a static file
+// the path.join is a utility function that helps us construct a path
 app.use(express.static(path.join(__dirname, "public")));
 
 // filtering allows us to only run the middleware on certain routes
@@ -26,6 +34,7 @@ app.use(shopRoutes);
 // create a 404 page
 app.use((req, res, next) => {
   res.status(404).sendFile(path.join(__dirname, "views", "404.html"));
+  console.log("404");
 });
 
 // the server takes the request and response objects
