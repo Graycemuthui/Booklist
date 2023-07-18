@@ -1,24 +1,18 @@
-doctype html
-html(lang="en")
-	head
-		meta(charset="UTF-8")
-		meta(name="viewport", content="width=device-width, initial-scale=1.0")
-		title #{pageTitle}
+extends layouts/main-layout.pug
+
+block styles
 		link(rel="stylesheet", href="/css/main.css")
 		link(rel="stylesheet", href="/css/product.css")
-	body 
-		header.add-product
-			nav.nav-product
-				ul 
-					li
-						a(href="/") Shop
-					li
-						a(href="/admin/add-product") Add Product
 
-		main.product-container
+block content
+	main.product-container
 			form(action="/admin/add-product", method="POST")
 				label(for="title") Title
 				input(type="text", name="title")#title
 				button.submit-btn(type="submit") Add Product
+
+
+
+	
 
 
