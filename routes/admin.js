@@ -9,7 +9,6 @@ const products = [];
 
 // same paths can be used if methods are different
 router.get("/add-product", (req, res, next) => {
-  console.log("In another middleware!");
   // join is a method of the path module that concatenates the paths
   res.sendFile(path.join(rootDir, "views", "add-product.html"));
 });
@@ -17,7 +16,8 @@ router.get("/add-product", (req, res, next) => {
 router.post("/add-product", (req, res, next) => {
   products.push({ title: req.body.title });
   // need to parse the body
-  console.log(req.body);
+  const obj = JSON.parse(JSON.stringify(req.body));
+  console.log(obj);
   res.redirect("/");
 });
 
