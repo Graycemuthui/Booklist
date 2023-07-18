@@ -15,7 +15,7 @@ const app = express();
 // set allows us to set a value globally
 // set the templating engine
 // pug is a templating engine
-app.set("view engine", "pug");
+app.set("view engine", "ejs");
 app.set("views", "views");
 
 // import the routes
