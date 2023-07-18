@@ -10,7 +10,7 @@ const products = [];
 // same paths can be used if methods are different
 router.get("/add-product", (req, res, next) => {
   // join is a method of the path module that concatenates the paths
-  res.sendFile(path.join(rootDir, "views", "add-product.html"));
+  res.render("add-product", { pageTitle: "Add Product" });
 });
 
 router.post("/add-product", (req, res, next) => {

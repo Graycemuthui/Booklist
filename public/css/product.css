@@ -29,7 +29,12 @@ body {
 
 .product-container {
   padding: 20px;
+  gap: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+.submit-btn {
+  margin-left: 10px;
 }
