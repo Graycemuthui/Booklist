@@ -1,5 +1,13 @@
 const products = [];
 
+exports.postAddProduct = (req, res, next) => {
+  products.push({ title: req.body.title });
+  // need to parse the body
+  const obj = JSON.parse(JSON.stringify(req.body));
+  console.log(obj);
+  res.redirect("/");
+};
+
 exports.getAddProduct = (req, res, next) => {
   // join is a method of the path module that concatenates the paths
   res.render("add-product", {
@@ -9,14 +17,6 @@ exports.getAddProduct = (req, res, next) => {
     productCss: true,
     activeAddProduct: true,
   });
-};
-
-exports.postAddProduct = (req, res, next) => {
-  products.push({ title: req.body.title });
-  // need to parse the body
-  const obj = JSON.parse(JSON.stringify(req.body));
-  console.log(obj);
-  res.redirect("/");
 };
 
 exports.getProducts = (req, res, next) => {

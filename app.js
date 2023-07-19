@@ -11,6 +11,7 @@ const bodyParser = require("body-parser");
 // express is a function
 const app = express();
 // call the body parser function
+const errorController = require("./controllers/error");
 
 // set allows us to set a value globally
 // set the templating engine
@@ -32,10 +33,7 @@ app.use("/admin", adminRoutes);
 app.use(shopRoutes);
 
 // create a 404 page
-app.use((req, res, next) => {
-  res.status(404).render("404", { pageTitle: "Page Not Found" });
-  console.log("404");
-});
+app.use(errorController.getError);
 
 // the server takes the request and response objects
 // event loop - these events keep on running as long as there are event listeners registered
